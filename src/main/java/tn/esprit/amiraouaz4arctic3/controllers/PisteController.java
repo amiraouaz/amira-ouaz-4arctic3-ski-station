@@ -1,19 +1,21 @@
 package tn.esprit.amiraouaz4arctic3.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import tn.esprit.amiraouaz4arctic3.Services.IPisteService;
 import tn.esprit.amiraouaz4arctic3.entites.Piste;
-import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
 @RequestMapping("/piste")
 public class PisteController {
+
     @Autowired
     IPisteService iPisteService;
+
     @GetMapping("/retrieveAllPistes")
     public List<Piste> retrieveAllPistes() {
-        return (List<Piste>) iPisteService.retrieveAllPistes();
+        return iPisteService.retrieveAllPistes();
     }
 
     @PostMapping("/addPiste")
@@ -28,22 +30,20 @@ public class PisteController {
 
     @DeleteMapping("/removePiste/{id}")
     public void removePiste(@PathVariable("id") Long numPiste) {
-
         iPisteService.removePiste(numPiste);
     }
 
     @GetMapping("/retrievePiste/{id}")
-    public Piste retrievePiste(@PathVariable("id") Long numPiste)
-    {
+    public Piste retrievePiste(@PathVariable("id") Long numPiste) {
         return iPisteService.retrievePiste(numPiste);
-
     }
-    @PatchMapping("assign-skier-to-piste")
+
+    @PatchMapping("/assign-skier-to-piste")
     public Piste assignSkierToPiste(
             @RequestParam Long numSkier,
             @RequestParam Long numPiste
     ) {
-        return  iPisteService.assignSkierToPiste(numSkier, numPiste);
+        return iPisteService.assignSkierToPiste(numSkier, numPiste);
     }
 
 }

@@ -1,4 +1,5 @@
 package tn.esprit.amiraouaz4arctic3.entites;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,12 +17,16 @@ public class Registration {
     private Long numRegistration;
 
     private Integer numWeek;
+
     @ManyToOne
     private Skier skier;
 
     @ManyToOne
     private Course course;
 
+    private LocalDate dateRegistration;
+
     public void setDateRegistration(LocalDate now) {
+        this.dateRegistration = now;
     }
 }

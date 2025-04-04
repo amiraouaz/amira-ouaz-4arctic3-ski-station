@@ -13,7 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @ToString
 @NoArgsConstructor
-public class Skier { // Class names should be capitalized (Skier instead of skier)
+public class Skier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,11 +26,14 @@ public class Skier { // Class names should be capitalized (Skier instead of skie
 
     @OneToMany(mappedBy = "skier")
     private List<Registration> registrations;
+
     @ManyToMany(mappedBy = "skiers")
     private Set<Piste> pistes;
-    @OneToOne (cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Subscription subscription;
 
     public void setCourse(Course course) {
+        // Logique pour associer un cours à un skieur, si nécessaire
     }
 }
