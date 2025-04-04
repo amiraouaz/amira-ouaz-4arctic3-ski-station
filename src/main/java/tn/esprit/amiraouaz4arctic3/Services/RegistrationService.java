@@ -2,7 +2,6 @@ package tn.esprit.amiraouaz4arctic3.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.esprit.amiraouaz4arctic3.Services.IRegistrationService;
 import tn.esprit.amiraouaz4arctic3.entites.Course;
 import tn.esprit.amiraouaz4arctic3.entites.Registration;
 import tn.esprit.amiraouaz4arctic3.entites.Skier;
@@ -67,5 +66,17 @@ public class RegistrationService implements IRegistrationService {
 
         // Save the updated skier with the assigned course
         return iskierRepository.save(savedSkier);
+    }
+    @Override
+    public Registration addRegistrationAndAssignToSkierAndCourse(Registration registration, Long numSkier, Long numCourse) {
+        Skier skier = iskierRepository.findById(numSkier)
+                .orElseThrow(() -> new RuntimeException("Skier not found"));
+        Course course = courseRepository.findById(numCourse)
+                .orElseThrow(() -> new RuntimeException("Course not found"));
+
+        registration.setSkier(skier);
+        registration.setCourse(course);
+
+        return iregistrationRepository.save(registration);
     }
 }

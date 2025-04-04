@@ -36,4 +36,5 @@ public class Skier {
     public void setCourse(Course course) {
         // Logique pour associer un cours à un skieur, si nécessaire
     }
+
 }

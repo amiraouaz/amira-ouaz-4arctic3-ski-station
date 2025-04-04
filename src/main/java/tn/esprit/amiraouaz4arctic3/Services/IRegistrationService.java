@@ -9,6 +9,7 @@ public interface IRegistrationService {
         Registration assignRegistrationToCourse(Long numRegistration, Long numCourse);
         Skier addSkierAndAssignToCourse(Skier skier, Long numCourse);
 
-    }
+    Registration addRegistrationAndAssignToSkierAndCourse(Registration registration, Long numSkier, Long numCourse);
+}
 
 

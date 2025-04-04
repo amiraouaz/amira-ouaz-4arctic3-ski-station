@@ -7,6 +7,7 @@ import tn.esprit.amiraouaz4arctic3.repositories.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class SkierService implements ISkierService {
@@ -79,4 +80,24 @@ public class SkierService implements ISkierService {
         skier.getRegistrations().add(registration);
         return iSikierRepository.save(skier);
     }
+
+
+
+    // Retrieve skiers by subscription type
+   /* @Override
+    public List<Skier> retrieveSkiersBySubscriptionType(typesubscription typesubscription) {
+        return iSikierRepository.findBytypesubscription(typesubscription);
+    }
+
+    // Retrieve subscriptions by type, sorted by start date
+    @Override
+    public Set<Subscription> getSubscriptionByType(typesubscription type) {
+        return isubscriptionRepository.findBytypesubscriptionOrderByStartDateAsc(type);
+    }
+
+    // Retrieve subscriptions within a date range
+    @Override
+    public List<Subscription> retrieveSubscriptionsByDates(LocalDate startDate, LocalDate endDate) {
+        return isubscriptionRepository.findByStartDateBetween(startDate, endDate);
+    }*/
 }

@@ -22,6 +22,7 @@ public class RegistrationController {
     public Registration addRegistrationAndAssignToSkier(
             @RequestBody Registration registration,
             @PathVariable(name = "numSkier") Long numSkier
+
     ) {
         return iregistrationService.addRegistrationAndAssignToSkier(registration, numSkier);
     }
